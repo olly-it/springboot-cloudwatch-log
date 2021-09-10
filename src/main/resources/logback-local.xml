@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+
+	<appender name="CLOUDWATCH"
+		class="com.kdgregory.logback.aws.CloudWatchAppender">
+		<logGroup>test-log-group</logGroup>
+		<logStream>test-stream</logStream>
+		<dedicatedWriter>true</dedicatedWriter>
+		<layout class="ch.qos.logback.classic.PatternLayout">
+			<pattern>%d{HH:mm:ss.SSS} [%thread] %-5level - %logger{36} - %msg%n</pattern>
+		</layout>
+	</appender>
+
+	<appender name="Console"
+		class="ch.qos.logback.core.ConsoleAppender">
+		<layout class="ch.qos.logback.classic.PatternLayout">
+			<pattern>%d{HH:mm:ss.SSS} [%thread] %-5level - %logger{36} - %msg%n</pattern>
+		</layout>
+	</appender>
+
+	<!-- LOG everything at INFO level on Console -->
+	<root level="info">
+		<appender-ref ref="Console" />
+	</root>
+
+	<!-- LOG it.olly.* at DEBUG level on Console and CLOUDWATCH -->
+	<logger name="it.olly" level="debug" additivity="false">
+		<appender-ref ref="CLOUDWATCH" />
+		<appender-ref ref="Console" />
+	</logger>
+
+</configuration>
