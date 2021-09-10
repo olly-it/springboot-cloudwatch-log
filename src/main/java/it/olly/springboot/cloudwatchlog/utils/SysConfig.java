@@ -19,7 +19,8 @@ public class SysConfig {
 	 * and put them into system.properties <br>
 	 * NOTE: resource can have placeholders like ${placeholder}. it searches
 	 * "placeholder" on system.properties and then (if system.properties is null or
-	 * void) checks also on system.env
+	 * void) checks also on system.env<br>
+	 * If resource doesn't exist, it just exits
 	 * 
 	 * @param resource file to be loaded
 	 */

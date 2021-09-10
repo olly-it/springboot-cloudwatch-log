@@ -10,7 +10,8 @@ public class SpringbootCloudwatchLogApplication {
 
 	public static void main(String[] args) {
 		// load properties from a file and set it as system's properties
-		// (used here to load aws's key/secret from a file instead of env variables
+		// (used here to load aws's key/secret and region from a file instead of env
+		// variables AWS_REGION, AWS_SECRET...)
 		SysConfig.setSystemPropertiesFromResource("/${env}.properties");
 
 		SpringApplication.run(SpringbootCloudwatchLogApplication.class, args);
